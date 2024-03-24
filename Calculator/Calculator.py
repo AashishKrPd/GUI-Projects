@@ -47,29 +47,35 @@ def click(event):
     screen.update()
 
 
-def random():
-    n = list(range(0, 9))+['a', 'b' , 'c', 'd', 'e']
-    from random import choice
-    st = "#"
-    for i in range(6):
-        st+=str(choice(n))
-    return st
+# def random():
+#     n = list(range(0, 9))+['a', 'b' , 'c', 'd', 'e']
+#     from random import choice
+#     st = "#"
+#     for i in range(6):
+#         st+=str(choice(n))
+#     return st
 
 
-color = random()
+# color = random()
+
+
+bColor = "#caf0f8"
+kColor = "#edf6f9"
+kbColor = "#00b4d8"
+dColor = "#2b2d42"
 
 
 root = Tk()
 root.geometry("400x650")
 root.title("Calculator by Aashish Kumar Prasad")
 root.wm_iconbitmap(resource_path("calc.ico"))
-root.configure(background = color)
+root.configure(background = bColor)
 
 scvalue = StringVar()
 scvalue.set("")
 
 
-screen = Entry(root, textvar = scvalue, font = "Lucida 40 bold")
+screen = Entry(root, textvar = scvalue, font = "Lucida 40 bold", fg=dColor)
 screen.pack(fill=X,  padx = 10, pady = 10)
 
 
@@ -82,10 +88,10 @@ buts = [["%", "^-1", "C", "B"],
 
 
 for i in range(len(buts)):
-    f = Frame(root , bg = color)
+    f = Frame(root , bg = bColor)
     
     for j in range(len(buts[i])):
-        b = Button(f, text = buts[i][j], font="Lucida 25 bold", width=3, relief=RAISED)
+        b = Button(f, text = buts[i][j], font="Lucida 25 bold", width=3, relief=RAISED, fg=kColor, bg=kbColor)
         b.grid(row=i, column = j, padx = 10)
         b.bind("<Button-1>", click)
     f.pack(pady = 10)
